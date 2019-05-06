@@ -24,7 +24,16 @@ public class Station implements Comparable<Station>{
         return this.getName().compareTo(s.getName());
     }
 
-    public boolean equals(Station s) {
-        return this.getName().equals(s.getName());
+    @Override
+    public int hashCode() {
+        return this.getName().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object s) {
+        if (!(s instanceof Station))
+            return false;
+        Station temp = (Station) s;
+            return this.getName().equals(temp.getName());
     }
 }
