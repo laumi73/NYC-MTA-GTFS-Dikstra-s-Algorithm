@@ -17,18 +17,23 @@ public class Station implements Comparable<Station>{
         return name;
     }
 
+    //Essential for ArrayList.binarySearch(E e) (comparable interface requirement)
     @Override
     public int compareTo(Station s) {
         return this.getName().compareTo(s.getName());
     }
 
+    //Essential for ArrayList.indexOf(Object o)
     @Override
     public int hashCode() {
         return this.getName().hashCode();
     }
 
+    //Essential for ArrayList.indexOf(Object o)
     @Override
     public boolean equals(Object s) {
+        if (s == null)
+            return false;
         if (!(s instanceof Station))
             return false;
         Station temp = (Station) s;
