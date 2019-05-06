@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Station implements Comparable<Station>{
     //Fields
     private String name;
