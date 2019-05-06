@@ -43,7 +43,7 @@ public class StopTimesReader {
     //Helper Methods
     private static String formatRoute(String[] line1, String[] line2) {
         int time = TimeConverter.subtract(line2[1] , line1[2]);
-        return (line1[4] + "," + line2[4] + "," + time);
+        return (line1[3] + "," + line2[3] + "," + time);
     }
 
     private static void addRoute(ArrayList<String> routeList, String route) {
