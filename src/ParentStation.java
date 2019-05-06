@@ -6,7 +6,7 @@ public class ParentStation extends Station{
     private ArrayList<String> subStations;
 
     //Number of substations
-    public int size = 0;
+    private int size = 0;
 
     //Constructors
     public ParentStation() {
@@ -24,6 +24,10 @@ public class ParentStation extends Station{
         //Getters
     public ArrayList<String> getSubStations() {
         return subStations;
+    }
+
+    public int size() {
+        return size;
     }
 
     public void addSubStation(String subStation) {
