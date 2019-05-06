@@ -27,6 +27,7 @@ public class StopsReader
     private static void addStop(ArrayList<ParentStation> parentStationList, String[] stop) {
         if (stop.length == 9) { //Check if it's a parent station (length of 9; substation has length of 10)
             parentStationList.add(new ParentStation(stop[0]));
+            //System.out.println(parentStationList.get(parentStationList.indexOf(new ParentStation(stop[0]))).getName()); //Debug use
         }
         else { //has length of 10
             parentStationList.get(parentStationList.indexOf(new ParentStation(stop[9]))).addSubStation(stop[0]);

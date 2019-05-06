@@ -11,10 +11,12 @@ public class ParentStation extends Station{
     //Constructors
     public ParentStation() {
         super();
+        subStations = new ArrayList<String>();
     }
 
     public ParentStation(String name) {
         super(name);
+        subStations = new ArrayList<String>();
     }
 
 
@@ -25,6 +27,7 @@ public class ParentStation extends Station{
     }
 
     public void addSubStation(String subStation) {
+        //System.out.println(subStation); //Debug use
         subStations.add(subStation);
         size++;
     }
