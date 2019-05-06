@@ -6,22 +6,16 @@ public class SubStation extends Station {
 
     private ArrayList<String> routeList;
 
-    private SubStation prev;
-
-    private int dist;
-
     //Constructors
     public SubStation() {
+        super();
         routeList = new ArrayList<String>();
-        prev = null;
-        dist = -1;
     }
 
-    public SubStation(SubStation prev, int dist) {
+    public SubStation(String name) {
+        super(name);
         routeList = new ArrayList<String>();
-        this.prev = prev;
-        this.dist = dist;
-    }
+}
 
     //Methods
         //Getters
@@ -30,21 +24,6 @@ public class SubStation extends Station {
         return parentStation;
     }
     */
-    public SubStation getPrev() {
-        return prev;
-    }
-
-    public int getDist() {
-        return dist;
-    }
-        //Setters
-    public void setPrev(SubStation prev) {
-        this.prev = prev;
-    }
-
-    public void setDist(int d) {
-        this.dist = d;
-    }
 
     public ArrayList<String> getRouteList() {
         return routeList;
