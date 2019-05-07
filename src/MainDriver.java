@@ -7,7 +7,8 @@ import java.util.Scanner;
 
 public class MainDriver {
     private static final String prefix = "C:\\Users\\laumi\\IdeaProjects\\NYC MTA GTFS Dikstra";
-
+    //Helper Methods
+    //Create an ArrayList of SubStations with routes attached
     private static ArrayList<SubStation> createVertexSet() throws IOException{
         ArrayList<SubStation> vertexSet = initializeVertexSet();
         Scanner s = new Scanner(new FileReader(new File(prefix + "\\routeList.txt")));
@@ -21,7 +22,7 @@ public class MainDriver {
         return vertexSet;
     }
 
-    //Helper Methods
+    //Initialize an  ArrayList of SubStation without routes attached
     private static ArrayList<SubStation> initializeVertexSet() throws IOException {
         ArrayList<SubStation> vertexSet = new ArrayList<SubStation>();
         Scanner s = new Scanner(new FileReader(new File(prefix + "\\stopList.txt")));
@@ -31,5 +32,14 @@ public class MainDriver {
         return vertexSet;
     }
 
-
+    public static void main(String[] Args) throws IOException{
+        Scanner r = new Scanner(System.in);  // Reading from System.in
+        System.out.println("Enter starting substation: ");
+        String Station1 = r.next();
+        System.out.println("Enter destination substation: ");
+        String Station2 = r.next();
+        String route = Dikstra.findFastestRoute(createVertexSet(), Station1, Station2);
+        r.close();
+        System.out.println(route);
+    }
 }
