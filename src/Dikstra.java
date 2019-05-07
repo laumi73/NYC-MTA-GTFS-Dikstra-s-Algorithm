@@ -98,22 +98,43 @@ public class Dikstra {
             nodeList.remove(currentNodeIndex);
             refSet.remove(currentNodeIndex);
         }
-        return trace(visitedNodes, visitedStations, visitedStations.indexOf(new SubStation(target)));
+        return traceLeastStop(visitedNodes, visitedStations, visitedStations.indexOf(new SubStation(target)));
     }
 
     private static String trace(ArrayList<SubStationNode> nodeList, ArrayList<SubStation> subStations, int targetIndex) {
         //int index = vertexSet.indexOf(new SubStation(target));
         if (nodeList.get(targetIndex).getPrev() == null) {
             return nodeList.get(targetIndex).getSubStation().getName() +
-                    " " + TimeConverter.revert((int) (double) nodeList.get(targetIndex).getDist());
+                    "," + TimeConverter.revert((int) (double) nodeList.get(targetIndex).getDist());
         }
         else {
             String route = "";
             while(nodeList.get(targetIndex).getPrev() != null) {
                 route = route +
                         nodeList.get(targetIndex).getSubStation().getName() +
-                        " " +
+                        "," +
                         TimeConverter.revert((int) (double) nodeList.get(targetIndex).getDist()) +
+                        "\n"
+                ;
+                targetIndex = subStations.indexOf(nodeList.get(targetIndex).getPrev().getSubStation());
+            }
+            return route;
+        }
+    }
+
+    private static String traceLeastStop(ArrayList<SubStationNode> nodeList, ArrayList<SubStation> subStations, int targetIndex) {
+        //int index = vertexSet.indexOf(new SubStation(target));
+        if (nodeList.get(targetIndex).getPrev() == null) {
+            return nodeList.get(targetIndex).getSubStation().getName() +
+                    "," + (int) (double) nodeList.get(targetIndex).getDist();
+        }
+        else {
+            String route = "";
+            while(nodeList.get(targetIndex).getPrev() != null) {
+                route = route +
+                        nodeList.get(targetIndex).getSubStation().getName() +
+                        "," +
+                        (int) (double) nodeList.get(targetIndex).getDist() +
                         "\n"
                 ;
                 targetIndex = subStations.indexOf(nodeList.get(targetIndex).getPrev().getSubStation());

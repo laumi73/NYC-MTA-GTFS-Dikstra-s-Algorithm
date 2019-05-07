@@ -38,7 +38,13 @@ public class MainDriver {
         String Station1 = r.next();
         System.out.println("Enter destination substation: ");
         String Station2 = r.next();
-        String route = Dikstra.findFastestRoute(createVertexSet(), Station1, Station2);
+        System.out.println("Enter evaluation criteria:\n0 - fastest in terms of time\n1 - least stops\n");
+        int leastRoute = r.nextInt();
+        String route = "";
+        if (leastRoute == 1)
+            route = Dikstra.findShortestRoute(createVertexSet(), Station1, Station2);
+        else if (leastRoute == 0)
+            route = Dikstra.findFastestRoute(createVertexSet(), Station1, Station2);
         r.close();
         System.out.println(route);
     }
