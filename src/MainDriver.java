@@ -32,20 +32,28 @@ public class MainDriver {
         return vertexSet;
     }
 
-    public static void main(String[] Args) throws IOException{
+    public static void main(String[] Args) throws IOException, ArrayIndexOutOfBoundsException {
         Scanner r = new Scanner(System.in);  // Reading from System.in
         System.out.println("Enter starting substation: ");
         String Station1 = r.next();
         System.out.println("Enter destination substation: ");
         String Station2 = r.next();
-        System.out.println("Enter evaluation criteria:\n0 - fastest in terms of time\n1 - least stops\n");
-        int leastRoute = r.nextInt();
-        String route = "";
-        if (leastRoute == 1)
-            route = Dikstra.findShortestRoute(createVertexSet(), Station1, Station2);
-        else if (leastRoute == 0)
-            route = Dikstra.findFastestRoute(createVertexSet(), Station1, Station2);
-        r.close();
-        System.out.println(route);
+        if (Station1.equals(Station2))
+            System.out.println("Error: starting station and destination cannot be the same.");
+        else {
+            System.out.println("Enter evaluation criteria:\n0 - fastest in terms of time\n1 - least stops\n");
+            int leastRoute = r.nextInt();
+            String route = "";
+            try {
+                if (leastRoute == 1)
+                    route = Dikstra.findShortestRoute(createVertexSet(), Station1, Station2);
+                else if (leastRoute == 0)
+                    route = Dikstra.findFastestRoute(createVertexSet(), Station1, Station2);
+                r.close();
+                System.out.println(route);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Error: invalid station name");
+            }
+        }
     }
 }
